@@ -167,6 +167,9 @@ section{position:relative;z-index:2;padding:clamp(3rem,8vw,6rem) 1.5rem}
 .reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.22,1,.36,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* ───── Hidden until midnight ───── */
+.locked{display:none!important}
+
 /* ───── Message ───── */
 .msg-section{display:flex;justify-content:center}
 .msg-card{
@@ -341,14 +344,14 @@ section{position:relative;z-index:2;padding:clamp(3rem,8vw,6rem) 1.5rem}
     <div class="celeb-heart">💜</div>
   </div>
 
-  <div class="scroll-hint">
+  <div class="scroll-hint locked" id="scrollHint">
     <span>rolar</span>
     <div class="scroll-arrow"></div>
   </div>
 </section>
 
 <!-- ═══════ MENSAGEM ═══════ -->
-<section class="msg-section">
+<section class="msg-section locked" id="msgSection">
   <div class="msg-card reveal">
     <h2>Para Você</h2>
     <p class="text">Eu queria encontrar as palavras exatas para expressar tudo o que sinto em cada instante ao seu lado. Você é, sem sombra de dúvidas, a mulher mais fascinante deste universo. Não há paisagem na Terra que se compare à sua beleza. As águas das Maldivas ou as areias dos Lençóis Maranhenses, por mais deslumbrantes que sejam, não alcançam sequer uma fração do encanto que você tem.
@@ -364,7 +367,7 @@ Hoje celebramos o nosso dia, o marco mais importante da minha existência. Foi o
 </section>
 
 <!-- ═══════ GALERIA ═══════ -->
-<section class="gallery">
+<section class="gallery locked" id="gallerySection">
   <div class="section-inner">
     <h2 class="reveal">Nossos Momentos</h2>
     <div class="gallery-grid">
@@ -384,7 +387,7 @@ Hoje celebramos o nosso dia, o marco mais importante da minha existência. Foi o
   </div>
 </section>
 
-<div class="footer">feito com 💜</div>
+<div class="footer locked" id="footerSection">feito com 💜</div>
 
 <script>
 /* ═══ Stars ═══ */
@@ -457,6 +460,7 @@ Hoje celebramos o nosso dia, o marco mais importante da minha existência. Foi o
       wrap.style.display='none';
       document.querySelector('.hero-sub').style.display='none';
       celeb.classList.add('active');
+      document.querySelectorAll('.locked').forEach(el=>el.classList.remove('locked'));
       fireConfetti();
       return;
     }
@@ -474,6 +478,7 @@ Hoje celebramos o nosso dia, o marco mais importante da minha existência. Foi o
     wrap.style.display='none';
     document.querySelector('.hero-sub').style.display='none';
     celeb.classList.add('active');
+    document.querySelectorAll('.locked').forEach(el=>el.classList.remove('locked'));
   }
 
   update();
